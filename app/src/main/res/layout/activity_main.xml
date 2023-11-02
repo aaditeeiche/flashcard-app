@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent"
+    tools:context=".MainActivity"
+    android:background="#FFFFFF"
+    >
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="20"
+        android:textSize="30sp"
+        android:textColor="@color/tomato" />
+
+    <TextView
+        android:id="@+id/flashcard_question"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/timer"
+        android:gravity="center"
+        android:background="@drawable/card_background"
+        android:text="What is the largest bone in the human body?"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/flashcard_hint"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/timer"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:background="@drawable/answer_background"
+        android:text="Hint: It's a bone in your leg!"
+        android:textSize="40sp"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/flashcard_question"
+        android:layout_alignParentRight="true"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="30dp"
+        android:id="@+id/next_card"
+        android:src="@drawable/next_icon"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/flashcard_question"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="30dp"
+        android:id="@+id/delete_card"
+        android:src="@drawable/trash_icon"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/flashcard_question"
+        android:layout_alignParentLeft="true"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="30dp"
+        android:id="@+id/prev_card"
+        android:rotation="180"
+        android:src="@drawable/next_icon"/>
+
+    <TextView
+        android:id="@+id/flashcard_answer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_below="@+id/flashcard_question"
+        android:gravity="center"
+        android:background="@color/orange"
+        android:text="The tibia"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/flashcard_answer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_below="@+id/flashcard_answer1"
+        android:gravity="center"
+        android:background="@color/orange"
+        android:text="The femur"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/flashcard_answer3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_below="@+id/flashcard_answer2"
+        android:gravity="center"
+        android:background="@color/orange"
+        android:text="The humerus"
+        android:textSize="30sp"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:id="@+id/toggle_choices_visibility"
+        android:src="@drawable/eye_hidden"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"
+        android:id="@+id/add_new_card"
+        android:src="@drawable/plus_icon"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="20dp"
+        android:id="@+id/edit_card"
+        android:src="@drawable/edit_icon"/>
+
+</RelativeLayout>

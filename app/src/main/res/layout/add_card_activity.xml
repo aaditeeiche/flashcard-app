@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent"
+    tools:context=".AddCardActivity"
+    android:background="#FFFFFF"
+    >
+
+    <EditText
+        android:id="@+id/enterQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:hint="Enter your question here!"
+        android:theme="@style/EditTextTheme"/>
+
+    <EditText
+        android:id="@+id/enterAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/enterQuestion"
+        android:layout_margin="10dp"
+        android:hint="Enter the answer here!"
+        android:theme="@style/EditTextTheme"/>
+
+    <EditText
+        android:id="@+id/enterIncorrectAnswer1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/enterAnswer"
+        android:layout_margin="10dp"
+        android:hint="Enter an incorrect answer here!"
+        android:theme="@style/EditTextTheme"/>
+
+    <EditText
+        android:id="@+id/enterIncorrectAnswer2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/enterIncorrectAnswer1"
+        android:layout_margin="10dp"
+        android:hint="Enter another incorrect answer here!"
+        android:theme="@style/EditTextTheme"/>
+
+    <EditText
+        android:id="@+id/enterHint"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/enterIncorrectAnswer2"
+        android:layout_margin="10dp"
+        android:hint="Enter a hint here (optional)"
+        android:theme="@style/EditTextTheme"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="30dp"
+        android:id="@+id/save"
+        android:src="@drawable/save_icon"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="30dp"
+        android:id="@+id/cancel"
+        android:src="@drawable/cancel_icon"/>
+
+</RelativeLayout>
