@@ -351,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (allFlashcards.isEmpty()) {
                     flashcardQuestion.setText("Add a new card!");
-                    flashcardHint.setText("Use the + button to add a new card!");
+                    flashcardHint.setText("   Use the + button to add a new card!");
                     correctAnswer.setText("");
                     incorrectAnswer1.setText("");
                     incorrectAnswer2.setText("");

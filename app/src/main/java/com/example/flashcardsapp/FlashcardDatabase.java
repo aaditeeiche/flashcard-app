@@ -19,7 +19,7 @@ public class FlashcardDatabase {
 
     public void initFirstCard() {
         if (db.flashcardDao().getAll().isEmpty()) {
-            insertCard(new Flashcard("Who is the 44th President of the United States", "Barack Obama"));
+            insertCard(new Flashcard("How many layers are present in the OSI model?", "7"));
         }
     }
 
