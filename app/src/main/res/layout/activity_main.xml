@@ -92,30 +92,6 @@
         android:text="The tibia"
         android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/flashcard_answer2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_below="@+id/flashcard_answer1"
-        android:gravity="center"
-        android:background="@color/orange"
-        android:text="The femur"
-        android:textSize="30sp"/>
-
-    <TextView
-        android:id="@+id/flashcard_answer3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_below="@+id/flashcard_answer2"
-        android:gravity="center"
-        android:background="@color/orange"
-        android:text="The humerus"
-        android:textSize="30sp"/>
-
     <ImageView
         android:id="@+id/toggle_choices_visibility"
         android:layout_width="50dp"
@@ -140,13 +116,16 @@
         android:layout_marginBottom="20dp"
         android:src="@drawable/plus_icon" />
 
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="20dp"
-        android:id="@+id/edit_card"
-        android:src="@drawable/edit_icon"/>
+<!--    <ImageView-->
+<!--        android:id="@+id/edit_card"-->
+<!--        android:layout_width="60dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginEnd="20dp"-->
+<!--        android:layout_marginBottom="20dp"-->
+<!--        android:src="@drawable/edit_icon" />-->
 
 </RelativeLayout>
