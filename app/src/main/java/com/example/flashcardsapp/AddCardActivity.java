@@ -55,8 +55,7 @@ public class AddCardActivity  extends AppCompatActivity {
                 String enteredIncorrectAnswer2 = incorrectField2.getText().toString();
                 String enteredHint = hintField.getText().toString();
                 
-                if (enteredQuestion.isEmpty() || enteredAnswer.isEmpty() ||
-                        enteredIncorrectAnswer1.isEmpty() || enteredIncorrectAnswer2.isEmpty()) {
+                if (enteredQuestion.isEmpty() || enteredAnswer.isEmpty()) {
                     Snackbar.make(saveButton,
                             "Please make sure you've filled out all required fields!",
                             Snackbar.LENGTH_SHORT)
@@ -65,8 +64,8 @@ public class AddCardActivity  extends AppCompatActivity {
                     Intent data = new Intent();
                     data.putExtra("question", enteredQuestion);
                     data.putExtra("answer", enteredAnswer);
-                    data.putExtra("incorrect1", enteredIncorrectAnswer1);
-                    data.putExtra("incorrect2", enteredIncorrectAnswer2);
+                    data.putExtra("incorrect1", "null");
+                    data.putExtra("incorrect2", "null");
                     data.putExtra("hint", enteredHint);
                     setResult(RESULT_OK, data);
                     finish();
