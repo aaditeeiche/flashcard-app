@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:id="@+id/parent"
     tools:context=".AddCardActivity"
-    android:background="#FFFFFF">
+    android:background="#333333">
 
     <EditText
         android:id="@+id/enterQuestion"

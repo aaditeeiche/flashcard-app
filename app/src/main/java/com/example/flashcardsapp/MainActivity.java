@@ -1,15 +1,20 @@
 package com.example.flashcardsapp;
 
 import android.animation.Animator;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -57,12 +62,15 @@ public class MainActivity extends AppCompatActivity {
         flashcardDatabase = new FlashcardDatabase(getApplicationContext());
         allFlashcards = flashcardDatabase.getAllCards();
 
-        countdownTimer = new CountDownTimer(16000, 1000) {
+        countdownTimer = new CountDownTimer(6000, 1000) {
             public void onTick(long millisUntilFinished) {
                 timer.setText("" + millisUntilFinished / 1000);
             }
 
             public void onFinish() {
+                Toast.makeText(getApplicationContext(), "Time Up!", Toast.LENGTH_SHORT).show();
+//                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Time Up!", Snackbar.LENGTH_LONG);
+//                snackbar.show();
             }
         };
 
@@ -346,44 +354,71 @@ public class MainActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                flashcardDatabase.deleteCard(flashcardQuestion.getText().toString());
-                allFlashcards = flashcardDatabase.getAllCards();
+                // Create an AlertDialog builder
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
-                if (allFlashcards.isEmpty()) {
-                    flashcardQuestion.setText("Add a new card!");
-                    flashcardHint.setText("   Use the + button to add a new card!");
-                    correctAnswer.setText("");
-                    incorrectAnswer1.setText("");
-                    incorrectAnswer2.setText("");
+                // Set the title and message for the dialog
+                builder.setTitle("Confirmation");
+                builder.setMessage("Are you sure you want to delete this card?");
 
-                    correctAnswer.setVisibility(View.INVISIBLE);
-                    incorrectAnswer1.setVisibility(View.INVISIBLE);
-                    incorrectAnswer2.setVisibility(View.INVISIBLE);
-                    toggleButton.setImageResource(R.drawable.eye_visible);
-                    answerChoicesVisible = false;
+                // Add a positive button (Yes) to confirm the deletion
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Delete the card from the database
+                        flashcardDatabase.deleteCard(flashcardQuestion.getText().toString());
+                        allFlashcards = flashcardDatabase.getAllCards();
 
-                    timer.setVisibility(View.INVISIBLE);
-                } else {
-                    currentCardDisplayedIndex--;
+                        if (allFlashcards.isEmpty()) {
+                            flashcardQuestion.setText("Add a new card!");
+                            flashcardHint.setText("   Use the + button to add a new card!");
+                            correctAnswer.setText("");
+                            incorrectAnswer1.setText("");
+                            incorrectAnswer2.setText("");
 
-                    if (currentCardDisplayedIndex == -1) {
-                        currentCardDisplayedIndex = allFlashcards.size() - 1;
+                            correctAnswer.setVisibility(View.INVISIBLE);
+                            incorrectAnswer1.setVisibility(View.INVISIBLE);
+                            incorrectAnswer2.setVisibility(View.INVISIBLE);
+                            toggleButton.setImageResource(R.drawable.eye_visible);
+                            answerChoicesVisible = false;
+
+                            timer.setVisibility(View.INVISIBLE);
+                        } else {
+                            currentCardDisplayedIndex--;
+
+                            if (currentCardDisplayedIndex == -1) {
+                                currentCardDisplayedIndex = allFlashcards.size() - 1;
+                            }
+
+                            Flashcard flashcard = allFlashcards.get(currentCardDisplayedIndex);
+                            flashcardQuestion.setText(flashcard.getQuestion());
+                            flashcardHint.setText("Hint: " + flashcard.getHint());
+                            correctAnswer.setText(flashcard.getAnswer());
+                            incorrectAnswer1.setText(flashcard.getWrongAnswer1());
+                            incorrectAnswer2.setText(flashcard.getWrongAnswer2());
+
+                            if (allFlashcards.size() == 0 || allFlashcards.size() == 1) {
+                                nextButton.setVisibility(View.INVISIBLE);
+                                prevButton.setVisibility(View.INVISIBLE);
+                            }
+
+                            startTimer();
+                        }
                     }
+                });
 
-                    Flashcard flashcard = allFlashcards.get(currentCardDisplayedIndex);
-                    flashcardQuestion.setText(flashcard.getQuestion());
-                    flashcardHint.setText("Hint: " + flashcard.getHint());
-                    correctAnswer.setText(flashcard.getAnswer());
-                    incorrectAnswer1.setText(flashcard.getWrongAnswer1());
-                    incorrectAnswer2.setText(flashcard.getWrongAnswer2());
-
-                    if (allFlashcards.size() == 0 || allFlashcards.size() == 1) {
-                        nextButton.setVisibility(View.INVISIBLE);
-                        prevButton.setVisibility(View.INVISIBLE);
+                // Add a negative button (No) to cancel the deletion
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Dismiss the dialog without deleting the card
+                        dialog.dismiss();
                     }
+                });
 
-                    startTimer();
-                }
+                // Create and show the AlertDialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
     }
